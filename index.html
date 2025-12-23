@@ -65,3 +65,37 @@ li{
 
 <div class="app">
   <h2>Daily Progress</h2>
+   <input id="task" placeholder="Task">
+  <input id="hours" type="number" placeholder="Hours">
+  <button onclick="add()">Add</button>
+
+  <ul id="list"></ul>
+
+  <div class="progress">
+    <div class="bar" id="bar"></div>
+  </div>
+</div>
+
+<script>
+let total=0
+
+function add(){
+  const task=document.getElementById("task").value
+  const hours=Number(document.getElementById("hours").value)
+  if(!task||!hours)return
+
+  total+=hours
+
+  const li=document.createElement("li")
+  li.textContent=task+" - "+hours+"h"
+  document.getElementById("list").appendChild(li)
+
+  document.getElementById("bar").style.width=Math.min(total*10,100)+"%"
+
+  document.getElementById("task").value=""
+  document.getElementById("hours").value=""
+}
+</script>
+
+</body>
+</html>
